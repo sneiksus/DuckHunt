@@ -1,0 +1,137 @@
+#main{
+    width: max-content;
+    height: max-content;
+    outline: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+canvas{
+    width: 470px;;
+    height:600px;
+    display:none;
+    background: url('./assets/background_withgrass_01.png');
+    cursor: url("./assets/cur.gif") 35 25, auto;
+}
+
+#menu{
+    width: 393px;
+    height:600px;
+    background-image: url("../project/assets/startscreen.png");
+}
+
+#play{
+    width: 150px;
+    height: 70px;
+   margin-top: 20px;
+   margin-left: 50% ;
+   transform: translateX(-50%);
+   background-color: yellowgreen;
+   border-radius: 5px;
+}
+
+#instr{
+    width: 120px;
+    height: 50px;
+   margin-top: 120px;
+   margin-left: 50% ;
+   transform: translateX(-50%);
+   background-color: yellowgreen;
+   border-radius: 5px;
+}
+
+#sound{
+    width: 70px;
+    height: 50px;
+   margin-top: 50px;
+   margin-left: 50% ;
+   transform: translateX(-50%);
+   background-color: yellowgreen;
+   border-radius: 5px;
+}
+
+#record{
+   padding-top: 20px;
+   width: max-content;
+   margin-left: 50% ;
+   transform: translateX(-50%);
+   font-size: 25px;
+   font-weight: bold;
+}
+#level{
+    width: 100px;
+    height: 20px;
+   margin-top: 100px;
+   margin-left: 50% ;
+   transform: translateX(-50%);
+   background-color: yellowgreen;
+   border-radius: 5px;
+ }
+
+ button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  #instructions{
+      position: absolute;
+      z-index: 100;
+      width: 300px;
+      background-color: white;
+      height: 500px;
+      margin-left: 45px;
+      visibility: hidden;
+  }
+
+  #instructions p{
+     margin: 10px;
+     font-size: 17px;
+  }
+
+  #close{
+    width: 120px;
+    height: 50px;
+   margin-top: 50px;
+   margin-left: 50% ;
+   transform: translateX(-50%);
+   background-color: white;
+   border-radius: 5px;
+  }
+
+  #gameover{
+      padding: 20px;
+    position: absolute;
+    z-index: 100;
+    width: 300px;
+    margin-top: -550px;
+    background-color: white;
+    height: 300px;
+    margin-left: 65px;
+    visibility: hidden;
+  }
+
+  #gameover h1{
+    margin-left: 75px;
+   }
+  
+   #ammo{
+   padding: 0px 10px 0px 10px;
+  position: absolute;
+  font-weight: bold;
+  z-index: 100;
+  margin-top: -70px;
+  background-color: white;
+  margin-left: 60px;
+  visibility: visible;
+}
+
+#ducks{
+    padding: 0px 10px 0px 10px;
+   position: absolute;
+   font-weight: bold;
+   z-index: 100;
+   margin-top: -70px;
+   background-color: white;
+   margin-left: 250pt;
+   visibility: visible;
+ }
