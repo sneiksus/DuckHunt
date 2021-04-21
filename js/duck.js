@@ -16,9 +16,8 @@ class Duck{
      img.src = this.skin;
      const that = this;
      img.onload = function () {    
-     ctx.clearRect(0, 0, canvas.width, canvas.height);
      console.log('robe');
-     ctx.drawImage(img,that.x, that.y,50,50);
+     ctx.drawImage(img,that.x, that.y,100,100);
      }
     
    }
@@ -45,6 +44,11 @@ class Duck{
          this.y+=this.dy;  
          this.time++;   
        }
+   }
+
+   notify(b){
+    if(this.x+80>=b.x && this.x<=b.x && this.y+70>=b.y && this.y<=b.y)
+        d.isShot=true;
    }
 
   playAudio(){

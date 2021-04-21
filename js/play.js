@@ -3,25 +3,29 @@ var ctx = canvas.getContext("2d");
 var timer
 var tick
 
-var d = new Duck(1,1,100,2);
+var d = [];
 
 
 function shot(e) { 
-  //here I need canvas mouse click coordinates
   var bullet = new Bullet(e.offsetX,e.offsetY);
-  bullet.playAudio(); 
-  bullet.shot(d); 
+  for(var i =0;i<3;i++)
+    bullet.addObserver(d[i]);
+    bullet.shot();
 }
 
 function init() {
-  //  canvas = document.getElementById("canvas");
- //   ctx = canvas.getContext("2d");
+     for(var i =0;i<3;i++)
+       d.push(new Duck(Math.random() * 50 - 5,Math.random() * 50 - 5,1,100,2))
+       
     requestAnimationFrame(mainLoop);
 }
 
 function mainLoop() {
     tick++;
-    d.move();
-    d.draw();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for(var i =0;i<3;i++){
+    d[i].move();
+    d[i].draw();
+    }
     requestAnimationFrame(mainLoop);
     }

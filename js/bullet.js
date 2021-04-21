@@ -3,13 +3,24 @@ class Bullet{
        this.x=x;
        this.y=y;
        this.audio=true;
+       this.observers =[];
     }
     playAudio(){
         if(this.audio==true)
           new Audio('./assets/shot2.wav').play();
     }
-    shot(d){
-       if(d.x+10>=this.x && d.x-10<=this.x && d.y+10>=this.y && d.y-10<=this.y)
-       d.isShot=true;
+    shot(){
+      for (var index in this.observers) {
+         var observer = this.observers[index]
+         observer.notify(this)
     }
+   }
+    addObserver(d){
+      this.observers.push(d);
+    }
+    delObserver(d){
+      var index = this.observers.indexOf(d)
+      delete this.observers[index]
+    }
+ 
 }
