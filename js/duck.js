@@ -5,22 +5,33 @@ class Duck{
        this.timeBeforeFlyAway = time;
        this.direction = direction;
        this.isShot = false;
-       this.skin = './assets/fly-animation.gif';
        this.time = 1;
        this.dx =Math.random() * 10 - 5;
        this.dy =Math.random() * 10 - 5;
+       this.up = new Image();
+       this.up.src='./assets/up.png';
+       this.down = new Image();
+       this.down.src='./assets/down.png';
+       this.skin ='down';
    }
 
-   draw() {    
-     var img = new Image();  
-     img.src = this.skin;
-     const that = this;
-     img.onload = function () {    
-     console.log('robe');
-     ctx.drawImage(img,that.x, that.y,100,100);
-     }
+   changeSkin() {
+     const that = this;    
+    window.setInterval( function(){
+    if(that.skin == 'down')
+    that.skin = 'up';
+     else
+     that.skin = 'down';
+     console.log(that.skin);
+    },200);
     
    }
+  draw(){
+    if(this.skin == 'up')
+   ctx.drawImage(this.up,this.x, this.y,100,100);
+   else
+   ctx.drawImage(this.down,this.x, this.y,100,100);
+  }
 
    flyAway(){
     this.y-=10;   
@@ -42,13 +53,16 @@ class Duck{
           }
          this.x+=this.dx;
          this.y+=this.dy;  
-         this.time++;   
+         this.time++;
+         
        }
    }
 
    notify(b){
-    if(this.x+80>=b.x && this.x<=b.x && this.y+70>=b.y && this.y<=b.y)
-        d.isShot=true;
+    if(this.x+80>=b.x && this.x<=b.x && this.y+70>=b.y && this.y<=b.y){
+       this.isShot=true;
+       document.getElementById("ducks").innerHTML = `<p>Ducks: ${--ducks}</p>`;
+    }
    }
 
   playAudio(){
