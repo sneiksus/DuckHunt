@@ -45,10 +45,10 @@ class Duck{
        else if(this.isShot == true)
        this.fallDown();
        else{
-        if (this.x >= canvas.width || this.x <= 0) {
+        if (this.x >= canvas.width-100 || this.x <= 0) {
           this.dx *= -1
           }
-          if (this.y >= canvas.height || this.y <= 0) {
+          if (this.y >= canvas.height-200 || this.y <= -20) {
           this.dy *= -1
           }
          this.x+=this.dx;
@@ -61,7 +61,7 @@ class Duck{
    notify(b){
     if(this.x+80>=b.x && this.x<=b.x && this.y+70>=b.y && this.y<=b.y){
        this.isShot=true;
-       document.getElementById("ducks").innerHTML = `<p>Ducks: ${--ducks}</p>`;
+       stat.ducks++;
     }
    }
 
