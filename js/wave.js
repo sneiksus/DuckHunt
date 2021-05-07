@@ -7,10 +7,8 @@ class Wave{
         this.useAudio = useAudio;
         this.d = [];
         for(var i =0;i<this.ducksNum;i++){
-            this.d.push(new Duck(Math.floor(Math.random() * (300 - 50 + 1)) + 50,Math.floor(Math.random() * (300 - 50 + 1)) + 50));
+            this.d.push(new Duck(Math.floor(Math.random() * (300 - 50 + 1)) + 50,Math.floor(Math.random() * (300 - 50 + 1)) + 50,1,i%2 ==0 ? 1:-1,speed));
             this.d[i].changeSkin();
-            if(this.useAudio==true?? i==0)
-            this. d[i].playAudio();
         }
         document.getElementById("ammo").innerHTML = `<p>Ammo: ${this.bulletsNum}</p>`;
         document.getElementById("ducks").innerHTML = `<p>Ducks: ${this.ducksNum}</p>`;
@@ -29,7 +27,7 @@ class Wave{
       }
      removeDuck(){
       this.d = this.d.filter(function( obj ) {
-        return obj.isShot!= true;
+        return obj.isShot!= true&&obj.y>=-50;
       });
       this.ducksNum = this.d.length;
       document.getElementById("ducks").innerHTML = `<p>Ducks: ${this.ducksNum}</p>`;
@@ -37,28 +35,32 @@ class Wave{
 
       shot(e) { 
         var bullet = new Bullet(e.offsetX,e.offsetY);
+       if(this.ducksNum>0&&this.bulletsNum>0)
+       stat.bullets++;
         for(var i =0;i<this.ducksNum;i++)
           bullet.addObserver(this.d[i]);
           bullet.shot();
           document.getElementById("ammo").innerHTML = `<p>Ammo: ${--this.bulletsNum}</p>`;
-          if(this.useAudio==true)
+          if(useAudio==true)
           bullet.playAudio();
       }
 
     gaming(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for(var i =0;i<this.ducksNum;i++){
-    this.d[i].move();
-    this.d[i].draw();
-   // this.checkColl();
-    if(this.d[i].y>canvas.height+10)
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for(var i =0;i<this.ducksNum;i++){
+        this.d[i].move();
+        this.d[i].draw();
+        // this.checkColl();
+        if(this.d[i].y>canvas.height+10||this.d[i].y<-50)
         this.removeDuck();
-    }
-    // if(this.ducksNum==0||this.bulletsNum==0){
-    //   var st = document.getElementById("gameover");
-    //   st.innerHTML = ` <h1>Game Over</h1>  <p>Killed: ${stat.ducks}</p> <p>Used ammo: ${stat.bullets}</p> <p>Accuracy: ${stat.calc()}</p> <hr> <button id='close' onclick='finish()'>    END    </button>`;
-    //   st.style.display = 'block';
-    // }
-    requestAnimationFrame(() => this.gaming());
+      }
+     
+        if(this.ducksNum!=0&&this.bulletsNum!=0)
+        requestAnimationFrame(() => this.gaming());
+        else{
+        init();
+        }
+    
+  
 }
 }

@@ -138,8 +138,13 @@ canvas{
  }
 
  #wave{
-   text-align: center;
-   font-size: 25px;
-   color: black;
    
+   font-size: 55px;
+   color: black;
+   position: absolute;
+   z-index: 101;
+  font-weight: bolder;
+  margin-left: 220px;
+  transform: translateY(-500px);
+  display: none;
  }

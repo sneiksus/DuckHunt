@@ -10,7 +10,6 @@ class Bullet{
           new Audio('./assets/shot2.wav').play();
     }
     shot(){
-      stat.bullets++;
       for (var index in this.observers) {
          var observer = this.observers[index]
          observer.notify(this)

@@ -5,7 +5,7 @@ class Stat{
     }
     calc(){
       if(this.bullets!=0)
-   return this.ducks/this.bullets;
+   return Math.round(this.ducks/this.bullets*100);
    }
  
 }
