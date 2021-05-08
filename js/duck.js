@@ -18,6 +18,7 @@ class Duck{
        this.Flipped_down = new Image();
        this.Flipped_down.src='./assets/flipped-down.png';
        this.skin ='down';
+       this.parts = [];
    }
 
    changeSkin() {
@@ -43,6 +44,8 @@ class Duck{
    }
    fallDown(){
     this.y+=10;   
+    for(var r = 0;r<4;r++)
+      this.parts[r].update();
    }
    move(){
      if(this.isShot == false && this.time>1000)
@@ -66,6 +69,8 @@ class Duck{
    notify(b){
     if(this.x+80>=b.x && this.x<=b.x && this.y+70>=b.y && this.y<=b.y){
        this.isShot=true;
+       for(var r=0;r<4;r++)
+       this.parts.push(new Particle(b.x,b.y,2, (Math.random() - 0.5) * (Math.random() * 6), (Math.random() - 0.5) * (Math.random() * 6)))
        stat.ducks++;
     }
    }
