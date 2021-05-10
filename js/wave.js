@@ -1,13 +1,10 @@
 class Wave{
-    constructor(complexity,ducksNum, bulletsNum, speed, useAudio){
-        this.complexity = complexity;
+    constructor(ducksNum, bulletsNum, speed, time){
         this.ducksNum = ducksNum;
         this.bulletsNum = bulletsNum;
-        this.speed = speed;
-        this.useAudio = useAudio;
         this.d = [];
         for(var i =0;i<this.ducksNum;i++){
-            this.d.push(new Duck(Math.floor(Math.random() * (300 - 50 + 1)) + 50,Math.floor(Math.random() * (300 - 50 + 1)) + 50,1,i%2 ==0 ? 1:-1,speed));
+            this.d.push(new Duck(Math.floor(Math.random() * (300 - 50 + 1)) + 50,Math.floor(Math.random() * (300 - 50 + 1)) + 50,speed,time));
             this.d[i].changeSkin();
         }
         document.getElementById("ammo").innerHTML = `<p>Ammo: ${this.bulletsNum}</p>`;
@@ -17,13 +14,13 @@ class Wave{
 
      checkColl(){
         for(var i=0;i<this.ducksNum;i++)
-        for(var r=i+1;r<this.ducksNum;r++){
-          if(this.d[i].x > this.d[r].x-10&&this.d[i].x < this.d[r].x+10){
-            this.d[i].dx *= -1;
-            this.d[r].dx *= -1;
-           
-          }
-          if(this.d[i].y > this.d[r].y-50&&this.d[i].y > this.d[r].y-50){
+        for(var r=0 ;r<this.ducksNum;r++){
+          if(!(  this.d[i].x > (this.d[r].x +100) || 
+          ( this.d[i].x +100) < this.d[r].x || 
+          this.d[i].y > (this.d[r].x + 30) ||
+          (this.d[i].y + 30) < this.d[r].y))
+          {
+            
             this.d[i].dy *= -1;
             this.d[r].dy *= -1;
           }
@@ -32,7 +29,7 @@ class Wave{
       }
      removeDuck(){
       this.d = this.d.filter(function( obj ) {
-        return obj.isShot!= true&&obj.y>=-50;
+        return obj.isShot!= true&&obj.y>=-70;
       });
       this.ducksNum = this.d.length;
       document.getElementById("ducks").innerHTML = `<p>Ducks: ${this.ducksNum}</p>`;
@@ -50,7 +47,7 @@ class Wave{
           bullet.playAudio();
       }
 
-    gaming(){
+    LOOP(){
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for(var i =0;i<this.ducksNum;i++){
         this.d[i].move();
@@ -61,7 +58,7 @@ class Wave{
       }
      
         if(this.ducksNum!=0&&this.bulletsNum!=0)
-        requestAnimationFrame(() => this.gaming());
+        requestAnimationFrame(() => this.LOOP());
         else{
         init();
         }

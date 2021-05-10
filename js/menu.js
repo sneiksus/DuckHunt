@@ -11,17 +11,11 @@ function closed(){
 }
 
 window.onload = () => {
+    if(localStorage.getItem('record')==null)
+    localStorage.setItem("record",0);
     document.getElementById('record').innerHTML = `RECORD: ${localStorage.getItem('record')}%`;
 }
 
-function level(){
-    if(document.getElementById('level').innerText == 'EASY')
-    document.getElementById('level').innerText = 'NORMAL';
-    else if(document.getElementById('level').innerText == 'NORMAL')
-    document.getElementById('level').innerText = 'HARD';
-    else
-    document.getElementById('level').innerText = 'EASY';
-}
 
 function play(){
     audio.pause();
@@ -31,9 +25,6 @@ function play(){
     if(useAudio==true)
     Duck.playAudio();
      init();
-    
-  //  document.getElementById('canv').onclick = function() { var a = new Bullet(1,1,true);
-  //  a.playAudio(); }
 }
 
 function finish(){

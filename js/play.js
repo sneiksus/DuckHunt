@@ -1,14 +1,11 @@
 var canvas = document.getElementById("canv");
 var ctx = canvas.getContext("2d");
 var w = [new Wave(1,5,10,1,true),new Wave(1,5,10,1,true),new Wave(1,5,10,1,true),new Wave(1,5,10,1,true),new Wave(1,5,10,1,true)];
- var stat = new Stat();
+var stat = new Stat();
 var ind =0;
-var useAudio = false;
-var difficulty = 'EASY';
+var useAudio = false; 
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+ 
 function init() {
   ind++;
   document.getElementById("canv").onclick = null;
@@ -24,11 +21,9 @@ function init() {
   var st = document.getElementById("wave");
   st.innerHTML = ind;
   st.style.display = 'block';
-  var vl=new Wave(1,5,10,ind*1,true);
-  console.log(ind)
-  
+  var vl=new Wave(5,10,(ind*1.6),(ind*150+300));
    setTimeout(() => {
      st.style.display = 'none'; 
      document.getElementById("canv").onclick = (e) =>{vl.shot(e);};
-   requestAnimationFrame(vl.gaming());}, 2000); 
+   requestAnimationFrame(vl.LOOP());}, 2000); 
 } 

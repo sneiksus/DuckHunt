@@ -3,10 +3,9 @@ class Bullet extends Subject{
       super();
        this.x=x;
        this.y=y;
-       this.audio=true;
     }
     playAudio(){
-        if(this.audio==true)
+        if(useAudio==true)
           new Audio('./assets/shot2.wav').play();
     }
     shot(){

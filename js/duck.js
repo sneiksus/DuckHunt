@@ -1,15 +1,14 @@
 class Duck extends Observer{
-   constructor(x,y,time,direction,speed){
+   constructor(x,y,speed,time){
      super();
        this.x = x;
        this.y = y;
        this.speed = speed
        this.timeBeforeFlyAway = time;
-       this.direction = direction;
        this.isShot = false;
        this.time = 1;
-       this.dx =Math.ceil(Math.random() * 3) *(Math.round(Math.random()) ? 1 : -1);
-       this.dy =Math.ceil(Math.random() * 3) *(Math.round(Math.random()) ? 1 : -1);
+       this.dx = (Math.round(Math.random()) ? 1 : -1);
+       this.dy = (Math.round(Math.random()) ? 1 : -1);
        this.up = new Image();
        this.up.src='./assets/up.png';
        this.down = new Image();
@@ -49,7 +48,7 @@ class Duck extends Observer{
       this.parts[r].update();
    }
    move(){
-     if(this.isShot == false && this.time>1000)
+     if(this.isShot == false && this.time>this.timeBeforeFlyAway)
        this.flyAway()
        else if(this.isShot == true)
        this.fallDown();
