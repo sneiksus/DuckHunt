@@ -1,9 +1,9 @@
-class Bullet{
+class Bullet extends Subject{
     constructor(x,y){
+      super();
        this.x=x;
        this.y=y;
        this.audio=true;
-       this.observers =[];
     }
     playAudio(){
         if(this.audio==true)
@@ -15,12 +15,6 @@ class Bullet{
          observer.notify(this)
     }
    }
-    addObserver(d){
-      this.observers.push(d);
-    }
-    delObserver(d){
-      var index = this.observers.indexOf(d)
-      delete this.observers[index]
-    }
+  
  
 }

@@ -1,5 +1,6 @@
-class Duck{
+class Duck extends Observer{
    constructor(x,y,time,direction,speed){
+     super();
        this.x = x;
        this.y = y;
        this.speed = speed
@@ -67,7 +68,7 @@ class Duck{
    }
 
    notify(b){
-    if(this.x+80>=b.x && this.x<=b.x && this.y+70>=b.y && this.y<=b.y){
+    if(this.x+90>=b.x && this.x<=b.x && this.y+70>=b.y && this.y+30<=b.y){
        this.isShot=true;
        for(var r=0;r<4;r++)
        this.parts.push(new Particle(b.x,b.y,2, (Math.random() - 0.5) * (Math.random() * 6), (Math.random() - 0.5) * (Math.random() * 6)))

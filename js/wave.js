@@ -17,12 +17,17 @@ class Wave{
 
      checkColl(){
         for(var i=0;i<this.ducksNum;i++)
-        for(var r=i+1;r<this.ducksNum;r++)
-          if(this.d[i].x > this.d[r].x-10&&this.d[i].x < this.d[r].x+10&&this.d[i].y > this.d[r].y-10&&this.d[i].y > this.d[r].y-10){
+        for(var r=i+1;r<this.ducksNum;r++){
+          if(this.d[i].x > this.d[r].x-10&&this.d[i].x < this.d[r].x+10){
+            this.d[i].dx *= -1;
             this.d[r].dx *= -1;
+           
+          }
+          if(this.d[i].y > this.d[r].y-50&&this.d[i].y > this.d[r].y-50){
+            this.d[i].dy *= -1;
             this.d[r].dy *= -1;
           }
-        
+        }
                
       }
      removeDuck(){
@@ -50,7 +55,7 @@ class Wave{
       for(var i =0;i<this.ducksNum;i++){
         this.d[i].move();
         this.d[i].draw();
-        // this.checkColl();
+        this.checkColl();
         if(this.d[i].y>canvas.height+10||this.d[i].y<-50)
         this.removeDuck();
       }

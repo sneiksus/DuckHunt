@@ -23,7 +23,7 @@ canvas{
 #play{
     width: 150px;
     height: 70px;
-   margin-top: 20px;
+   margin-top: 100px;
    margin-left: 50% ;
    transform: translateX(-50%);
    background-color: yellowgreen;
@@ -58,15 +58,6 @@ canvas{
    font-size: 25px;
    font-weight: bold;
 }
-#level{
-    width: 100px;
-    height: 20px;
-   margin-top: 100px;
-   margin-left: 50% ;
-   transform: translateX(-50%);
-   background-color: yellowgreen;
-   border-radius: 5px;
- }
 
  button:focus {
     outline: none;
@@ -91,7 +82,7 @@ canvas{
   #close{
     width: 120px;
     height: 50px;
-   margin-top: 50px;
+   margin-top: 80px;
    margin-left: 50% ;
    transform: translateX(-50%);
    background-color: white;

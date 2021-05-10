@@ -1,9 +1,15 @@
 class Observer{
-     update();
+     notify() {};
 }
 
 class Subject{
-    addObserver();
-    remObserver();
-    update();
+    constructor() {this.observers = []}
+    addObserver(d){
+        this.observers.push(d);
+      }
+      delObserver(d){
+        var index = this.observers.indexOf(d)
+        delete this.observers[index]
+      }
+    shot() {};  
 }
